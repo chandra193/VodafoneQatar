@@ -14,7 +14,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class VodafoneQA {
 	
-	/*
+	
 	@Test
 	public void LaunchVodadone() throws InterruptedException {
 		
@@ -50,7 +50,7 @@ public class VodafoneQA {
 		driver.quit();
 		
 	}
-	*/
+	
 	@Test
 	public void ChooseyourRecharge() throws InterruptedException
 	{
