@@ -1,0 +1,126 @@
+package com.sai.TestNG;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class VodafoneQA {
+	
+	/*
+	@Test
+	public void LaunchVodadone() throws InterruptedException {
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver1= new ChromeDriver();
+		driver1.manage().window().maximize();
+		driver1.get("https://www.vodafone.qa/en/home");
+		Thread.sleep(3000);
+		System.out.println(driver1.getTitle());
+		driver1.quit();
+		
+	}
+	
+	
+	@Test
+	public void ClickonRecharge() throws InterruptedException {
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.vodafone.qa/en/home");
+		Thread.sleep(3000);
+		//click on recharge button
+		driver.findElement(By.xpath("(//*[@class='button rct-btn button--secondary button--rounded button--small'])[1]")).click();
+		System.out.println(driver.getTitle());
+		
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("window.scrollBy(0, 300);");
+	
+		//select the QA10 international min
+		//driver.findElement(By.xpath("(//*[@class='button rct-btn button--primary button--small mb-20'])[1]")).click();
+		
+		driver.quit();
+		
+	}
+	*/
+	@Test
+	public void ChooseyourRecharge() throws InterruptedException
+	{
+		WebDriverManager.chromedriver().setup();
+		//WebDriverManager.edgedriver().setup();
+		//WebDriver driver = new EdgeDriver();
+		WebDriver driver= new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		driver.get("https://www.vodafone.qa/en/home");
+		Thread.sleep(3000);
+		//click on recharge button
+		driver.findElement(By.xpath("(//*[@class='button rct-btn button--secondary button--rounded button--small'])[1]")).click();
+		//Scroll to the recharge  
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("window.scrollBy(0, 300);");
+		
+		//get text 
+		String choose=driver.findElement(By.xpath("(//*[@class='chevron__text'])[1]")).getText();
+		System.out.println(choose);
+		//click on see more
+		//driver.findElement(By.xpath("//*[@class='button rct-btn button--tertiary']")).click();
+		Thread.sleep(3000);
+		//click on combo+ tab 
+		//driver.findElement(By.xpath("//*[@href='#Combo+']")).click();
+		//driver.findElement(By.xpath("//a[@href='#Flex']")).click();
+		//driver.findElement(By.xpath("//a[@href='#Combo+' and contains(@class, 'tabs__tab--active')]\n"
+				//+ "")).click();
+		//driver.findElement(By.xpath(" //a[@href='#Combo+' and contains(@class, 'tabs__tab--tooltip')]")).click();
+		//driver.findElement(By.xpath("//*[@class='tabs__tab tabs__tab--tooltip tabs__tab--active']")).click();
+		//driver.findElement(By.xpath("//*[@class='tabs__tab tabs__tab--tooltip tabs__tab--active']")).click();
+		//click on flex
+		//driver.findElement(By.xpath("(//*[@class='tabs__tab tabs__tab--tooltip '])[1]")).click();
+		//driver.findElement(By.xpath("//*[@id=\"1\"]/div/div/div/div[1]/nav/a[2]")).click();
+		//Thread.sleep(3000);
+		
+		
+		//driver.findElement(By.xpath("(//*[@class='heading heading--4 bold no-gutter--all color--red'])[1]")).getClass();
+		//List<WebElement> combo = driver.findElements(By.xpath("//*[@class='heading heading--4 bold no-gutter--all color--red"));
+		//for (WebElement element : combo) {
+		  //  System.out.println(element.getClass());
+		
+		
+		//click on flex
+		driver.findElement(By.xpath("(//*[@class='tabs__tab tabs__tab--tooltip '])[1]")).click();
+		Thread.sleep(3000);
+		String flex = driver.findElement(By.xpath("(//*[@class='tooltiptext'])[2]")).getText();
+		System.out.println(flex);
+		
+		
+		//CLICK ON CREDIT
+		driver.findElement(By.xpath("(//*[@class='tabs__tab tabs__tab--tooltip '])[2]")).click();
+		Thread.sleep(3000);
+		String credit = driver.findElement(By.xpath("(//*[@class='tooltiptext'])[3]")).getText();
+		System.out.println(credit);
+		
+		//click on data
+		driver.findElement(By.xpath("(//*[@class='tabs__tab tabs__tab--tooltip '])[3]")).click();
+		Thread.sleep(3000);
+		String data = driver.findElement(By.xpath("(//*[@class='tooltiptext'])[4]")).getText();
+		System.out.println(data);
+		
+		//click on international tab 
+		driver.findElement(By.xpath("(//*[@class='tabs__tab tabs__tab--tooltip '])[4]")).click();
+		String international = driver.findElement(By.xpath("(//*[@class='tooltiptext'])[5]")).getText();
+		System.out.println(international);
+		
+		
+		
+	
+
+	}
+}
