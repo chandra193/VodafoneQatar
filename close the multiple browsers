@@ -1,0 +1,23 @@
+	WebDriverManager.chromedriver().setup();
+	WebDriver driver = new ChromeDriver();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+	driver.manage().window().maximize();
+	driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+	// click on the orange hrm link
+	driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[3]/div[2]/p[2]/a")).click();
+
+	Set<String> windowID = driver.getWindowHandles();
+
+	for (String winID:windowID) {
+		
+		String title= driver.switchTo().window(winID).getTitle();
+		System.out.println(title);
+		
+		
+		if (title.endsWith("Human Resources Management Software | OrangeHRM HR Software")) {
+			driver.close();
+			
+		}
+	}
