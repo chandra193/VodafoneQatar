@@ -1,1 +1,27 @@
 
+	SWITCH Browser to forward, backwards and refresh the browser
+Navigation methods of the webpage url
+driver.navigate().to();
+driver.navigate().back();
+driver.navigate().forward();
+driver.navigate().refresh();
+
+  driver.manage().window().maximize();
+	driver.get("https://demo.nopcommerce.com/register?returnUrl=%2F");
+	System.out.println(driver.getTitle());
+	System.out.println(driver.getCurrentUrl());
+	driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	System.out.println(driver.getTitle());
+	System.out.println(driver.getCurrentUrl());
+	driver.get("https://testautomationpractice.blogspot.com");
+	System.out.println(driver.getTitle());
+	System.out.println(driver.getCurrentUrl());
+	driver.navigate().to("https://www.vodafone.qa/en/home");
+	System.out.println(driver.getTitle());
+	System.out.println(driver.getCurrentUrl());
+	driver.navigate().back();
+	System.out.println(driver.getCurrentUrl());
+	driver.quit();
+
+---------------------------------------------------------------------------------------------------------
+
