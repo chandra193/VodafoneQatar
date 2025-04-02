@@ -1,0 +1,76 @@
+package com.sai.TestNG;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class HiddenDropDown {
+
+	
+	@Test
+	public void hiidendrop() {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		driver.manage().window().maximize();
+		
+		//login
+		driver.findElement(By.xpath("//*[@name='username']")).sendKeys("Admin");
+		driver.findElement(By.xpath("//*[@name='password']")).sendKeys("admin123");
+		System.out.println(driver.getCurrentUrl());
+		System.out.println(driver.getTitle());
+		driver.findElement(By.xpath("//*[contains (@class, 'oxd-button oxd-button')]")).click();
+		//driver.quit();
+		
+		//click on PIM 
+		driver.findElement(By.xpath("(//*[@class='oxd-main-menu-item'])[2]")).click();
+		
+		//click on job title
+		driver.findElement(By.xpath("(//*[contains (@class, 'oxd-select-text')])[10]")).click();
+		
+		/*WebElement hiddenOption = driver.findElement(By.xpath("//*[contains (@class, 'oxd-select-text')])[10]"));
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", hiddenOption);*/
+		  // Locate the hidden drop-down
+        WebElement dropdown = driver.findElement(By.xpath("(//*[contains (@class, 'oxd-select-text')])[10]"));
+        
+        //count no of options
+        List<WebElement> hidden = driver.findElements(By.xpath("//div[@role='listbox']//span"));
+        System.out.println("Number of dropdown option:" +hidden.size());
+
+        
+        //print all options in the console window enhanced for loop
+        for (WebElement op:hidden){
+        	
+        	System.out.println(op.getText());
+        	
+        	
+        }
+        
+        driver.findElement(By.xpath("(//*[@class ='oxd-select-option'])[3]")).click();
+        
+        // Use JavaScript to make it visible
+        /*JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].style.display='block';", dropdown);
+
+        // Now interact with it using Select class
+        Select select = new Select(dropdown);
+        select.selectByVisibleText("Option 1");*/
+
+		
+	}
+	
+
+}
